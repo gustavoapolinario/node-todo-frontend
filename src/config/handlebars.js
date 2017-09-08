@@ -15,7 +15,7 @@ module.exports = function(server) {
 	/* set view engine */
 	server.set('view engine', 'hbs');
 	/* views directory to search */
-	server.set('views', 'views');
+	server.set('views', 'src/views');
 
 }
 
