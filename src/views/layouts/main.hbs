@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link type="text/css" rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css"  media="screen,projection"/>
+	<link rel="stylesheet" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+	<link type="text/css" rel="stylesheet" href="/static/css/bootstrap-complement.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="/todo/static/css/todo.css"  media="screen,projection"/>
+
+	<title>{{title}}</title>
+
+	<base href="/todo/">
+
+</head>
+<body>
+
+	<div class="container">
+		<nav class="navbar navbar-inverse bg-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">
+						<i class="fa fa-home"></i> Home
+					</a>
+				</div>
+				<div class="navbar-header">
+					<span class="navbar-brand">&gt;</span>
+				</div>
+				<div class="navbar-header">
+					<a class="navbar-brand" href="./">TodoApp</a><
+				</div>
+			</div>
+		</nav>
+
+
+
+
+		<div>
+			<header class="page-header">
+				<h1>{{ title }}</h1>
+			</header>
+
+			{{#unless todoItem._id}}
+			<form action="./" method="get">
+				<div class="col-xs-12 col-sm-9 col-md-10">
+					<input name="description" class="form-control" placeholder="Search Task"></input>
+				</div>
+
+				<div class="col-xs-12 col-sm-3 col-md-2">
+					<button class="btn btn-info">
+						<i class="fa fa-search"></i>
+					</button>
+					<a href="new" class="btn btn-primary" title="Add New Task">
+						<i class="fa fa-plus"></i>
+					</a>
+
+				</div>
+			</form>
+			{{/unless}}
+
+			{{{ body }}}
+
+		</div>
+
+	</div>
+
+</body>
+</html>

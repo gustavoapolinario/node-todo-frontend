@@ -1,0 +1,33 @@
+{
+  "name": "microservices-nodejs-handlebars-frontend",
+  "version": "1.0.0",
+  "description": "A Front-end service with node.js and handlebars for microservice example",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
+    "compile": "npm update && npm test",
+    "test": "mocha -R spec src/**/*.spec.js"
+  },
+  "keywords": [
+    "node.js",
+    "handlebars",
+    "microservices",
+    "express",
+    "Front-end"
+  ],
+  "author": "Gustavo Apolinario <gustavo.guss@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars-helpers": "^0.9.8",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.0",
+    "nock": "^9.0.14",
+    "nodemon": "^1.12.0"
+  }
+}
