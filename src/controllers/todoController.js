@@ -26,6 +26,8 @@ exports.todo_list = function(req, res) {
 
 exports.todo_detail = function(req, res) {
 
+	var filter = {id: req.params.id };
+
 	new TodoApi().getDetail( filter )
 		.then( (body, response) => {
 			res.render('todoItem', {
@@ -45,7 +47,7 @@ exports.todo_create_post = function(req, res) {
 		done: req.body.done
 	}
 
-	new TodoApi().create( params, filter )
+	new TodoApi().create( params )
 		.then( (body, response) => {
 			res.render('todoItem', {
 				title: title_default + ' - List',
