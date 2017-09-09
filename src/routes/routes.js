@@ -6,6 +6,6 @@ module.exports = function(server) {
     require('./todoRoutes')(server)
 
     server.use("/static", express.static(path.join(__dirname, '../public/static')));
-    server.use("/todo/static", express.static(path.join(__dirname, '../public/todo/static')));
+    server.use("/todo/static", express.static(path.join(__dirname, '../public/todo-static')));
 
 }
