@@ -9,24 +9,46 @@ class TodoApi {
 		this.todoRequestOptions = todoRequestOptions ? todoRequestOptions : new TodoRequestOptions();
 	}
 
-	getList(filter, callback) {
-		request.get(this.todoRequestOptions.getRequestOption(filter), callback)
+	getList(filter) {
+		return new Promise( (resolve, reject) => {
+			request.get(this.todoRequestOptions.getRequestOption(filter),
+				(error, response, body) => { error ? reject(error) : resolve(body, response) }
+			)
+		})
 	}
 
-	getDetail(filter, callback) {
-		request.get(this.todoRequestOptions.getRequestOption(filter), callback)
+	getDetail(filter) {
+		return new Promise( (resolve, reject) => {
+			request.get(this.todoRequestOptions.getRequestOption(filter),
+				(error, response, body) => { error ? reject(error) : resolve(body, response) }
+			)
+		})
+		
 	}
 
-	create(params, callback) {
-		request.post(this.todoRequestOptions.getRequestOption(null, params), callback)
+	create(params) {
+		return new Promise( (resolve, reject) => {
+			request.post(this.todoRequestOptions.getRequestOption(null, params),
+				(error, response, body) => { error ? reject(error) : resolve(body, response) }
+			)
+		})
 	}
 
-	update(filter, params, callback) {
-		request.put(this.todoRequestOptions.getRequestOption(filter, params), callback)
+	update(filter, params) {
+		return new Promise( (resolve, reject) => {
+			request.put(this.todoRequestOptions.getRequestOption(filter, params),
+				(error, response, body) => { error ? reject(error) : resolve(body, response) }
+			)
+		})
+		
 	}
 
-	delete(filter, callback) {
-		request.del(this.todoRequestOptions.getRequestOption(filter), callback)
+	delete(filter) {
+		return new Promise( (resolve, reject) => {
+			request.del(this.todoRequestOptions.getRequestOption(filter),
+				(error, response, body) => { error ? reject(error) : resolve(body, response) }
+			)
+		})
 	}
 
 }

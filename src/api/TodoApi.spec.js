@@ -18,13 +18,13 @@ function parsedUrl(todoRequestOptions, filter) {
 	}
 }
 
-describe('TodoApi', function() {
+describe('TodoApi', () => {
 	const host = 'http://mockedapi.test/'
 		, todoUrl = 'todo/'
 		, todoRequestOptions = new TodoRequestOptions( host, todoUrl )
 		, todoApi = new TodoApi(todoRequestOptions);
 
-	it('getList() should return 5 mocked itens', function() {
+	it('getList() should return 6 mocked itens', (done) => {
 		var filter = {}
 		var urlParsed = parsedUrl(todoRequestOptions, filter)
 
@@ -34,7 +34,6 @@ describe('TodoApi', function() {
 		      }
 		    })
 			.get( urlParsed.path )
-			.delay(5000)
 			.reply(200,
 				[
 					{
@@ -71,15 +70,17 @@ describe('TodoApi', function() {
 			);
 
 
-		var callback = function(error, response, body) {
-			expect( body ).to.be.an('array').to.have.lengthOf(6);
-		}
-		todoApi.getList(filter, callback)
-		
+		todoApi.getList( filter )
+			.then( (body, response) => {
+				expect( body ).to.be.an('array').to.have.lengthOf(5);
+				done();
+			})
+			.catch( error => done(error) );
+
 	});
 
 
-	it('getDetail() should return mocked item', function() {
+	it('getDetail() should return mocked item', (done) => {
 		var filter = { id: '59b29a10747883040351430d'}
 		var urlParsed = parsedUrl(todoRequestOptions, filter)
 
@@ -89,12 +90,6 @@ describe('TodoApi', function() {
 		    "createdAt": "2017-09-08T13:24:32.075Z",
 		    "done": false
 		}
-		var object2 = {
-		    "_id": filter.id,
-		    "description": "test2",
-		    "createdAt": "2a017-09-08T13:24:32.075Z",
-		    "done": false
-		}
 
 		nock( urlParsed.host, {
 		      reqheaders: {
@@ -102,27 +97,22 @@ describe('TodoApi', function() {
 		      }
 		    })
 			.get( urlParsed.path )
-			.reply(200, object2 );
+			.reply(200, object );
 
-		var callback = function(error, response, body) {
-			console.log( body )
-			expect( body ).to.be.an('object')
-			expect( body._id ).to.equal(object._id)
-			expect( body.description ).to.equal(object.description)
-			expect( body.createdAt ).to.equal(object.createdAt)
-			expect( body.done ).to.equal(object.done)
 
-			expect( body ).to.have.deep.property('_id', object._id);
-			expect( body ).to.have.deep.property('description', object.description);
-			expect( body ).to.have.deep.property('createdAt', object.createdAt);
-			expect( body ).to.have.deep.property('done', object.done);
-			expect( body ).to.deep.equal(object)
-		}
-		todoApi.getDetail(filter, callback)
+		todoApi.getDetail( filter )
+			.then( (body, response) => {
+				expect( body ).to.be.an('object')
+				expect( body._id ).to.equal(object._id)
+				expect( body ).to.deep.equal(object)
+				done();
+			})
+			.catch( error => done(error) );
+
 	});
 
 
-	it('create() should return mocked new item', function() {
+	it('create() should return mocked new item', (done) => {
 		var urlParsed = parsedUrl(todoRequestOptions)
 
 		var formData = {
@@ -138,23 +128,26 @@ describe('TodoApi', function() {
 
 		nock( urlParsed.host, {
 		      reqheaders: {
-		        'Content-Type': 'application/json'
+		        'Content-Type': 'application/x-www-form-urlencoded'
 		      }
 		    })
-			.post( urlParsed.path, formData )
+			.matchHeader('accept', 'application/json')
+			.post( urlParsed.path )
 			.reply(200, created);
 
-		var callback = function(error, response, body) {
-			console.log( body )
-			expect( body ).to.have.deep.property('_id', created._id);
-			expect( body ).to.deep.equal(created)
-		}
-		todoApi.create(formData, callback)
+
+		todoApi.create( formData )
+			.then( (body, response) => {
+				expect( body ).to.have.deep.property('_id', created._id);
+				expect( body ).to.deep.equal(created)
+				done();
+			})
+			.catch( error => done(error) );
 	});
 
 
-	it('update() should return updated item', function() {
-		var filter = { id: '59b29a10747883040351430d'}
+	it('update() should return updated item', (done) => {
+		var filter = { id: '59b29a10747883040351430d' }
 		var urlParsed = parsedUrl(todoRequestOptions, filter)
 
 		var formData = {
@@ -170,23 +163,39 @@ describe('TodoApi', function() {
 
 		nock( urlParsed.host, {
 		      reqheaders: {
-		        'Content-Type': 'application/json'
+		        'Content-Type': 'application/x-www-form-urlencoded'
 		      }
 		    })
-			.post( urlParsed.path, formData )
-			.reply(200, 'error');
-			/*[{
-		    "_id": filter.id,
-		    "description": formData.description,
-		    "createdAtw": "201s7-09-08T13:24:32.075Z",
-		    "done": formData.done
-		}]);*/
+			.put( urlParsed.path )
+			.reply(200, updated);
 
-		var callback = function(error, response, body) {
-			console.log( body )
-			expect( body ).to.have.deep.property('_id', updated._id);
-			expect( body ).to.deep.equal(updated)
-		}
-		todoApi.create(formData, callback)
+
+		todoApi.update( filter, formData )
+			.then( (body, response) => {
+				console.log(body)
+				expect( body ).to.have.deep.property('_id', updated._id);
+				expect( body ).to.deep.equal(updated)
+				done();
+			})
+			.catch( error => done(error) );
 	});
+
+
+	it('delete() should return null', (done) => {
+		var filter = { id: '59b29a10747883040351430d' }
+		var urlParsed = parsedUrl(todoRequestOptions, filter)
+
+		nock( urlParsed.host )
+			.delete( urlParsed.path )
+			.reply(200, '');
+
+
+		todoApi.delete( filter )
+			.then( (body, response) => {
+				done();
+			})
+			.catch( error => done(error) );
+	});
+
+
 });
