@@ -6,6 +6,10 @@ exports.redirect_home = function(req, res) {
 	res.redirect('/todo/');
 }
 
+exports.health_check = function(req, res) {
+	res.send("OK");
+}
+
 exports.todo_list = function(req, res) {
 
 	var filter = {}
