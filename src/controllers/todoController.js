@@ -48,6 +48,7 @@ exports.todo_create_post = function(req, res) {
 
 	var params = {
 		description: req.body.description,
+		number: req.body.number,
 		done: req.body.done
 	}
 
@@ -78,6 +79,7 @@ exports.todo_update_post = function(req, res) {
 
 	var params = {
 		description: req.body.description,
+		number: req.body.number,
 		done: req.body.done
 	}
 	var filter = {id: req.params.id };

@@ -25,7 +25,8 @@ WORKDIR /app
 COPY --from=0 /app/src/public/static/bower_components/ /app/src/public/static/bower_components/
 
 COPY package.json /app/
-RUN npm install --only=production
+RUN npm install
+# --only=production
 
 COPY src /app/src
 

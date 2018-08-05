@@ -17,13 +17,18 @@
 		{{/if}}
 
 		<div class="form-group">
+			<label>Task Number (Max 200)</label>
+			<input type="number" class="form-control" name="number" min="1" max="200" value="{{todoItem.number}}" required>
+		</div>
+
+		<div class="form-group">
 			<label>Task Description</label>
 			<input type="text" class="form-control" name="description" value="{{todoItem.description}}" required>
 		</div>
 
 		<div class="form-check">
 			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" name="done"{{#if todoItem.done}} checked{{/if}}>
+				<input type="checkbox" class="form-check-input" value="1" name="done"{{#if todoItem.done}} checked{{/if}}>
 				Done
 			</label>
 		</div>
