@@ -54,11 +54,7 @@ exports.todo_create_post = function(req, res) {
 
 	new TodoApi().create( params )
 		.then( (body, response) => {
-			res.render('todoItem', {
-				title: title_default + ' - List',
-				name: 'Gustavo Apolinario',
-				todoItem: body
-			});
+			res.redirect('/todo/' + body.id);
 		})
 		.catch(error => { res.send('Error. ' + error) });
 
