@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "test": "mocha -R spec src/**/*.spec.js",
-    "bowerInstall": "bower install",
-    "bowerInstallDocker": "bower install --allow-root"
+    "test": "mocha -R spec src/**/*.spec.js"
   },
   "keywords": [
     "node.js",
@@ -20,16 +18,17 @@
   "author": "Gustavo Apolinario <gustavo.guss@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.0",
-    "express": "^4.15.4",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "font-awesome": "^4.7.0",
     "handlebars-helpers": "^0.10.0",
-    "request": "^2.81.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "bower": "^1.8.4",
     "mocha": "^5.2.0",
-    "nock": "^9.0.14",
-    "nodemon": "^1.12.0"
+    "nock": "^10.0.4",
+    "nodemon": "^1.18.9"
   }
 }
