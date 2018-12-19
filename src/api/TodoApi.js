@@ -36,6 +36,8 @@ class TodoApi {
 
 	update(filter, params) {
 		return new Promise( (resolve, reject) => {
+			console.log(params)
+			console.log(this.todoRequestOptions.getRequestOption(filter, params))
 			request.put(this.todoRequestOptions.getRequestOption(filter, params),
 				(error, response, body) => { error ? reject(error) : resolve(body, response) }
 			)

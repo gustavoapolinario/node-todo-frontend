@@ -1,10 +1,10 @@
 <div class="clearfix"></div>
 
 <section class="mt-5">
-	<form method="post" action="{{#if todoItem._id}}{{todoItem._id}}/update{{else}}create{{/if}}">
+	<form method="post" action="{{#if todoItem.id}}{{todoItem.id}}/update{{else}}create{{/if}}">
 		{{#if todoItem._id}}
-			<h2 class="task-id">Task #{{todoItem._id}}</h2>
-			<input type="hidden" name="_id" value="{{todoItem._id}}">
+			<h2 class="task-id">Task #{{todoItem.id}}</h2>
+			<input type="hidden" name="id" value="{{todoItem.id}}">
 		{{/if}}
 		
 		{{#if todoItem.errors}}
@@ -37,8 +37,8 @@
 		<a href="./" class="btn btn-secondary">Cancel</a>
 		<button type="submit" class="btn btn-primary">Submit</button>
 
-		{{#if todoItem._id}}
-			<a href="{{todoItem._id}}/delete" class="btn btn-danger pull-right" onclick="if(!confirm('Really want delete this task?')) return false;">Delete</a>
+		{{#if todoItem.id}}
+			<a href="{{todoItem.id}}/delete" class="btn btn-danger pull-right" onclick="if(!confirm('Really want delete this task?')) return false;">Delete</a>
 		{{/if}}
 	</form>
 
