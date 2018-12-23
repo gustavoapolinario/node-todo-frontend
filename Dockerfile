@@ -18,4 +18,3 @@ EXPOSE 3000
 
 CMD [ "npm", "start" ]
 
-RUN ls -lah /app/src/public/static/bower_components/
