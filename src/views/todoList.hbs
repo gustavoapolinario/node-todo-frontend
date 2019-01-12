@@ -1,9 +1,11 @@
-<div class="clearfix"></div>
-
 {{#if todoList}}
-<div class="mt-5 list-group">
-	{{#each todoList}}
-	<a href="./{{ id }}" class="list-group-item list-group-item-action">{{description}}</a>
-	{{/each}}
-</div>
+	<section>
+		{{#each todoList}}
+			<div class="list-group list-group-flush">
+			<a href="./{{ id }}" class="list-group-item list-group-item-action">
+				{{description}}
+			</a>
+			</div>
+		{{/each}}
+	</section>
 {{/if}}

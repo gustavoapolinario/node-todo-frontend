@@ -7,64 +7,57 @@
 	<link rel="shortcut icon" type="image/png" href="/static/favicon.ico"/>
 	<link type="text/css" rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
-	<link type="text/css" rel="stylesheet" href="/static/css/bootstrap-complement.css"  media="screen,projection"/>
-	<link type="text/css" rel="stylesheet" href="/todo/static/css/todo.css"  media="screen,projection"/>
+	<link href="/todo/static/css/todo.css" rel="stylesheet">
 
 	<title>{{title}}</title>
 
 	<base href="/todo/">
 
 </head>
-<body>
-
-	<div class="container">
-		<nav class="navbar navbar-inverse bg-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/">
-						<i class="fa fa-home"></i> Home
-					</a>
-				</div>
-				<div class="navbar-header">
-					<span class="navbar-brand">&gt;</span>
-				</div>
-				<div class="navbar-header">
-					<a class="navbar-brand" href="./">TodoApp</a>
-				</div>
-			</div>
-		</nav>
+<body class="bg-light">
 
 
+	<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">Todo Example</a>
+		<button class="navbar-toggler p-0 border-0" type="button" id="bt-menu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
+		<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="./">TodoApp <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
-		<div>
-			<header class="page-header">
-				<h1>{{ title }}</h1>
-			</header>
+	<main role="main" class="container">
 
-			{{#unless todoItem._id}}
-			<form action="./" method="get">
-				{{!-- <div class="col-xs-12 col-sm-9 col-md-10">
-					<input name="description" class="form-control" placeholder="Search Task"></input>
-				</div> --}}
-
-				<div class="col-xs-12 col-sm-3 col-md-2">
-					{{!-- <button class="btn btn-info">
-						<i class="fa fa-search"></i>
-					</button> --}}
+		<div class="my-3 p-3 bg-white rounded box-shadow">
+			<div class="pb-2 d-flex flex-row">
+				<h6 class="mr-auto p-2 pt-3">{{ title }}</h6>
+				<small class="p-2">
 					<a href="new" class="btn btn-primary" title="Add New Task">
 						<i class="fa fa-plus"></i>
 					</a>
-
+				</small>
+			</div>
+			{{!-- {{#unless todoItem._id}}
+			<form class="form-inline input-group mb-2">
+				<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+				<div class="input-group-append">
+					<button class="btn btn-secondary" type="submit">Search</button>
 				</div>
 			</form>
-			{{/unless}}
+			{{/unless}} --}}
 
 			{{{ body }}}
-
 		</div>
+	</main>
 
-	</div>
-
+	{{!-- <script src="/static/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/static/bootstrap/dist/js/bootstrap.min.js"></script> --}}
+	<script src="/todo/static/js/todo.js"></script>
 </body>
 </html>

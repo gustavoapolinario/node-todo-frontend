@@ -85,7 +85,8 @@ exports.todo_update_post = function(req, res) {
 			res.render('todoItem', {
 				title: title_default + ' - List',
 				name: 'Gustavo Apolinario',
-				todoItem: body
+				todoItem: body,
+				message: 'Updated'
 			});
 		})
 		.catch(error => { res.send('Error. ' + error) });

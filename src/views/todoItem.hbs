@@ -1,6 +1,12 @@
-<div class="clearfix"></div>
-
-<section class="mt-5">
+<section>
+	{{#if message}}
+	<div class="alert alert-success" role="alert">
+		{{message}}
+		<button type="button" class="close bt-close-alert" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	{{/if}}
 	<form method="post" action="{{#if todoItem.id}}{{todoItem.id}}/update{{else}}create{{/if}}">
 		{{#if todoItem._id}}
 			<h2 class="task-id">Task #{{todoItem.id}}</h2>

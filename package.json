@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.2.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "font-awesome": "^4.7.0",
