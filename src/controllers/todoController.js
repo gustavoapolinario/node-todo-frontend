@@ -91,3 +91,36 @@ exports.todo_update_post = function(req, res) {
 		})
 		.catch(error => { res.send('Error. ' + error) });
 };
+
+exports.cpu_overload = function(req, res) {
+	const start = process.hrtime();
+
+	const isPrimeNumber = num => {
+		var qttDividers = 0;
+		for(var i = 1; i <= num; i++) {
+			if ( num % i == 0 && ++qttDividers > 2)
+				break;
+		}
+		if (qttDividers == 2) return 1;
+		else return 0;
+	}
+
+	var elapsed_time = function(note){
+		var precision = 3; // 3 decimal places
+		var elapsed = process.hrtime(start)[1] / 1000000; // divide by a million to get nano to milli
+		return process.hrtime(start)[0] + " s, " + elapsed.toFixed(precision) + " ms"; // print message + time
+		start = process.hrtime(); // reset the timer
+	}
+
+	var qtdPrimes = 0;
+	var maxNumber = 100100;
+	for(let c = 1; c < maxNumber; c++) {
+		qtdPrimes += isPrimeNumber(c)
+	}
+
+	res.send(qtdPrimes + " em " + maxNumber + ". Total time: " + elapsed_time());
+}
+
+exports.health_check2 = function(req, res) {
+	res.send("OK");
+}

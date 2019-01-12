@@ -38,9 +38,6 @@ const search = () => {
 			console.log(ElementsFiltered)
 			showElements('#tasksList .list-group-item')
 			hideArrayElements(ElementsFiltered)
-			
-			//let element = e.target.parentElement.parentElement;
-			//element.classList.add("hidden");
 		})
 }
 
