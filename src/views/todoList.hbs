@@ -1,10 +1,10 @@
 {{#if todoList}}
-	<section>
+	<section id="tasksList">
 		{{#each todoList}}
 			<div class="list-group list-group-flush">
-			<a href="./{{ id }}" class="list-group-item list-group-item-action">
-				{{description}}
-			</a>
+				<a href="./{{ id }}" class="list-group-item list-group-item-action">
+					{{description}}
+				</a>
 			</div>
 		{{/each}}
 	</section>

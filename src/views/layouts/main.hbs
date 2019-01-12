@@ -43,21 +43,19 @@
 					</a>
 				</small>
 			</div>
-			{{!-- {{#unless todoItem._id}}
+			{{#unless todoItem}}
 			<form class="form-inline input-group mb-2">
-				<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+				<input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search">
 				<div class="input-group-append">
 					<button class="btn btn-secondary" type="submit">Search</button>
 				</div>
 			</form>
-			{{/unless}} --}}
+			{{/unless}}
 
 			{{{ body }}}
 		</div>
 	</main>
 
-	{{!-- <script src="/static/jquery/dist/jquery.slim.min.js"></script>
-    <script src="/static/bootstrap/dist/js/bootstrap.min.js"></script> --}}
 	<script src="/todo/static/js/todo.js"></script>
 </body>
 </html>
