@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "test": "mocha -R spec src/**/*.spec.js"
+    "test": "./node_modules/mocha/bin/mocha -R spec src/**/*.spec.js"
   },
   "keywords": [
     "node.js",
