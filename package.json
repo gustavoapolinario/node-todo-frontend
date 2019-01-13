@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js",
-    "test": "./node_modules/mocha/bin/mocha -R spec src/**/*.spec.js"
+    "test": "node_modules/.bin/mocha"
   },
   "keywords": [
     "node.js",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "mocha": "^5.2.0",
+    "mocha-multi-reporters": "^1.1.7",
     "nock": "^10.0.4",
     "nodemon": "^1.18.9"
   }
