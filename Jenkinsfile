@@ -10,6 +10,9 @@ node {
 	stage('Git') {
 		git 'https://github.com/gustavoapolinario/node-todo-frontend'
 	}
+	stage('version') {
+		sh ' npm --version'
+	}
 	stage('Build') {
 		sh 'npm install'
 	}
