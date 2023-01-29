@@ -1,4 +1,4 @@
-//Jenkins file only to tutorial example
+//Jenkins file for Practise Test 1 Part 3
 pipeline {
   agent any
     
