@@ -12,7 +12,6 @@ node {
 	}
 	stage('Build') {
 		sh 'npm install'
-		sh 'npm audit fix --force'
 	}
 	stage('Test') {
 		sh 'npm test'
